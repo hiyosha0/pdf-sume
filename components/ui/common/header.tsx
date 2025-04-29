@@ -4,8 +4,12 @@ import { Button } from "../button";
 import NavLink from "./nav-link";
 import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 import PlanBadge from "./plan-badge";
+import { unstable_noStore as noStore } from "next/cache";
 
 export default function Header() {
+  // Opt out of caching for this component
+  noStore();
+
   return (
     <nav className="container flex items-center justify-between py-4 lg:px-8 px-2 mx-auto">
       <div className=" flex lg:flex-1">

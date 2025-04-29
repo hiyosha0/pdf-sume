@@ -5,8 +5,12 @@ import React from "react";
 import { Badge } from "../badge";
 import { cn } from "@/lib/utils";
 import { Crown } from "lucide-react";
+import { unstable_noStore as noStore } from "next/cache";
 
 export default async function PlanBadge() {
+  // Opt out of caching for this component
+  noStore();
+
   const user = await currentUser();
 
   if (!user?.id) return null;
@@ -18,8 +22,9 @@ export default async function PlanBadge() {
     priceId = await getPriceIdForActiveUser(email);
   }
 
-  let planName = "Buy a plan";
+  console.log("Current user plan:", priceId); // Debug log
 
+  let planName = "Buy a plan";
   const plan = pricingPlans.find((plan) => plan.priceId === priceId);
 
   if (plan) {
