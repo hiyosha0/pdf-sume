@@ -3,6 +3,37 @@ import { getDbConnection } from "./db";
 import { getUploadCount } from "./summaries";
 import { User } from "@clerk/nextjs/server";
 
+export async function initializeNewUser(email: string, fullName: string) {
+  const sql = await getDbConnection();
+  const basicPlan = pricingPlans.find((plan) => plan.id === "basic");
+
+  try {
+    const existingUser = await sql`
+      SELECT id FROM users WHERE email = ${email}
+    `;
+
+    if (existingUser.length === 0) {
+      await sql`
+        INSERT INTO users (
+          email, 
+          full_name, 
+          price_id, 
+          status
+        ) VALUES (
+          ${email}, 
+          ${fullName}, 
+          ${basicPlan?.priceId}, 
+          'inactive'
+        )
+      `;
+      console.log("Initialized new user with basic plan:", email);
+    }
+  } catch (error) {
+    console.error("Error initializing user:", error);
+    throw error;
+  }
+}
+
 export async function getPriceIdForActiveUser(email: string) {
   const sql = await getDbConnection();
 
