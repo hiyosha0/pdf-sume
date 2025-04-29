@@ -1,3 +1,4 @@
+import { Summary } from "@/types";
 import React from "react";
 import { Card } from "../ui/card";
 import { DeleteIcon, FileTextIcon } from "lucide-react";
@@ -56,7 +57,7 @@ const StatusBadge = ({ status }: { status: string }) => {
   );
 };
 
-export default function SummaryCard({ summary }: { summary: any }) {
+export default function SummaryCard({ summary }: { summary: Summary }) {
   return (
     <MotionDiv
       variants={itemVariants}

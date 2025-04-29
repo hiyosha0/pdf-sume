@@ -14,6 +14,7 @@ import { currentUser } from "@clerk/nextjs/server";
 import { ArrowUpRight, CloudUploadIcon } from "lucide-react";
 import Link from "next/link";
 import { redirect } from "next/navigation";
+import { Summary } from "@/types";
 import React from "react";
 
 export default async function DashBoardPage() {
@@ -21,7 +22,7 @@ export default async function DashBoardPage() {
   if (!user?.id) return redirect("/sign-in");
   const userId = user?.id;
   const { hasReachedLimit, uploadLimit } = await hasReachedUploadLimit(userId);
-  const summaries = await getSummaries(userId);
+  const summaries: Summary[] = await getSummaries(userId);
   return (
     <main className=" min-h-screen">
       <BgGradient className=" from-emerald-200 via-teal-200 to-cyan-200" />
@@ -97,7 +98,7 @@ export default async function DashBoardPage() {
             <EmptySummaryState />
           ) : (
             <div className=" grid grid-cols-1 gap-4 sm:gap-6 md:grid-cols-2 lg:grid-cols-3 sm:px-0">
-              {summaries.map((summary, index) => (
+              {summaries.map((summary: Summary, index) => (
                 <SummaryCard key={index} summary={summary} />
               ))}
             </div>
