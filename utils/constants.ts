@@ -12,9 +12,9 @@ export const pricingPlans = [
     ],
     id: "basic",
     paymentLink: isDev
-      ? "https://buy.stripe.com/test_9AQ2ag2Ih0vBbuw4gh" // Test mode basic plan
-      : "https://buy.stripe.com/test_9AQ2ag2Ih0vBbuw4gh", // Live mode basic plan
-    priceId: "price_1RJAtKBLcKtx3YtUqLIUlumZ",
+      ? "https://buy.stripe.com/test_00g7uHfQl6ZZ7jq7st" // Test mode basic plan
+      : "https://buy.stripe.com/test_00g7uHfQl6ZZ7jq7st", // Live mode basic plan
+    priceId: "price_1RFVSYIrXk7nKM4ogjagfdJ4",
   },
   {
     name: "Pro",
@@ -27,9 +27,9 @@ export const pricingPlans = [
     ],
     id: "pro",
     paymentLink: isDev
-      ? "https://buy.stripe.com/test_14k5ms96F6TZ9mobII" // Test mode pro plan
-      : "https://buy.stripe.com/test_14k5ms96F6TZ9mobII", // Live mode pro plan
-    priceId: "price_1RJAtKBLcKtx3YtU6ieQqnsp",
+      ? "https://buy.stripe.com/test_cN216j5bH4RR8nucMM" // Test mode pro plan
+      : "https://buy.stripe.com/test_cN216j5bH4RR8nucMM", // Live mode pro plan
+    priceId: "price_1RFVSYIrXk7nKM4oltL4JXDE",
   },
 ];
 
