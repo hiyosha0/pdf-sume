@@ -13,8 +13,8 @@ const fontSans = FontSans({
 });
 
 export const metadata: Metadata = {
-  title: "Sommaire",
-  description: "Sommaire is an app for summerizing PDF articles.",
+  title: "Learngram",
+  description: "Lecture notes like insta-stories😎..",
 };
 
 export default function RootLayout({
